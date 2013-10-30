@@ -1,0 +1,52 @@
+﻿@model Album.Models.PhotoContainer
+
+@using Album.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="span10 columns">
+    <div id="crs" class="carousel slide">
+        <ol class="carousel-indicators">
+            @foreach (int i in Model.Indicators)
+            {
+                <li data-target="#crs" data-slide-to="@i" class="@(i == 0 ? "active" : null)"></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @foreach (Photo o in Model.Photos)
+            {
+                <div class="item @(o.Active ? "active" : null)">
+                    <img src="@o.Url" alt="@o.Title" />
+                    <div class="carousel-caption">
+                        <h4>@o.Title (@o.DisplaySize)</h4>
+                        <a href="@Url.Action("Download", new { f = @o.Title })" class="btn btn-primary"><i class="icon-file icon-white"></i> Download</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <a class="carousel-control left" href="#crs" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#crs" data-slide="next">&rsaquo;</a>
+    </div>
+
+    <script type="text/javascript">
+        function init() {
+            $('#crs').carousel({
+                interval: 5000
+            });
+
+            //$('#crs').bind('mousewheel', function (e) {
+            //    e.preventDefault();
+            //    if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0)
+            //        $(this).carousel('next');
+
+            //    else
+            //        $(this).carousel('prev');
+            //});
+        }
+
+        $(init);
+    </script>
+</div>
