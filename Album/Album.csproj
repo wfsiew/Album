@@ -94,6 +94,12 @@
     <Content Include="images\Lighthouse.jpg" />
     <Content Include="images\Penguins.jpg" />
     <Content Include="images\Tulips.jpg" />
+    <Content Include="js\lib\least\.DS_Store" />
+    <Content Include="js\lib\least\css\.DS_Store" />
+    <Content Include="js\lib\least\css\least.scss" />
+    <Content Include="js\lib\least\img\.DS_Store" />
+    <Content Include="js\lib\least\img\effects\.DS_Store" />
+    <Content Include="js\lib\least\js\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="js\lib\imagegallery\css\jquery.image-gallery.css" />
     <Content Include="js\lib\imagegallery\css\jquery.image-gallery.min.css" />
@@ -120,6 +126,13 @@
     <Content Include="js\lib\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="js\lib\jquery-ui\jquery-ui.min.css" />
     <Content Include="js\lib\jquery-ui\jquery-ui.min.js" />
+    <Content Include="js\lib\least\css\least.min.css" />
+    <Content Include="js\lib\least\img\effects\close.png" />
+    <Content Include="js\lib\least\img\effects\spinner.gif" />
+    <Content Include="js\lib\least\img\effects\white.gif" />
+    <Content Include="js\lib\least\js\jquery.lazyload.min.js" />
+    <Content Include="js\lib\least\js\least.min.js" />
+    <Content Include="js\lib\least\readme.txt" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -155,6 +168,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="js\lib\least\img\full\" />
+    <Folder Include="js\lib\least\img\thumb\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

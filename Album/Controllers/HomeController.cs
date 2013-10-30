@@ -109,7 +109,7 @@ namespace Album.Controllers
         private Size GetThumbnailSize(Image original)
         {
             // Maximum size of any dimension.
-            const int maxPixels = 75;
+            const int maxPixels = 240;
 
             // Width and height.
             int originalWidth = original.Width;

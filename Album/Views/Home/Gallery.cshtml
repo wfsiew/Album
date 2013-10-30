@@ -13,14 +13,48 @@
     <meta name="viewport" content="width=device-width" />
     <title>Gallery</title>
 
+    <link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/js/lib/least/css/least.min.css" rel="stylesheet" />
+
     <script src="~/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="~/js/lib/least/js/least.min.js"></script>
+    <script src="~/js/lib/least/js/jquery.lazyload.min.js"></script>
 </head>
 <body>
-    
+    <section>
+        <ul id="gallery">
+            <li id="fullPreview"></li>
+            @foreach (Photo o in Model)
+            {
+                <li>
+                    <a href="@o.Url"></a>
+                    <img data-original="@Url.Action("Thumbnail", new { f = @o.Title })"
+                         src="@Url.Content("~/js/lib/least/img/effects/white.gif")" alt="@o.Title" />
+                    <div class="overLayer"></div>
+                    <div class="infoLayer">
+                        <ul>
+                            <li>
+                                <h2>@o.Title</h2>
+                            </li>
+                            <li>
+                                <p>
+                                    @o.DisplaySize<br/>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="projectInfo">
+                        <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Download", new { f = @o.Title })'"><i class="icon-file icon-white"></i> Download</button>
+                    </div>
+                </li>
+            }
+        </ul>
+    </section>
 
     <script type="text/javascript">
         function init() {
-            
+            $('#gallery').least();
         }
 
         $(init);
