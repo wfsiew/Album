@@ -96,9 +96,6 @@
     <Content Include="images\Penguins.jpg" />
     <Content Include="images\Tulips.jpg" />
     <Content Include="js\lib\least\css\least.scss" />
-    <Content Include="js\lib\least\img\.DS_Store" />
-    <Content Include="js\lib\least\img\effects\.DS_Store" />
-    <Content Include="js\lib\least\js\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="js\lib\jquery-2.0.3.min.js" />
     <Content Include="js\lib\jquery-ui\images\animated-overlay.gif" />
