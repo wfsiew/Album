@@ -95,8 +95,6 @@
     <Content Include="images\Lighthouse.jpg" />
     <Content Include="images\Penguins.jpg" />
     <Content Include="images\Tulips.jpg" />
-    <Content Include="js\lib\least\.DS_Store" />
-    <Content Include="js\lib\least\css\.DS_Store" />
     <Content Include="js\lib\least\css\least.scss" />
     <Content Include="js\lib\least\img\.DS_Store" />
     <Content Include="js\lib\least\img\effects\.DS_Store" />
