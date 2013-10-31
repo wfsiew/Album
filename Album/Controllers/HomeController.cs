@@ -110,6 +110,8 @@ namespace Album.Controllers
             using (MemoryStream ms = new MemoryStream())
             {
                 thumbnail.Save(ms, ImageFormat.Png);
+                thumbnail.Dispose();
+                image.Dispose();
                 b = ms.ToArray();
             }
 
