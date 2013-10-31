@@ -23,7 +23,7 @@ namespace Album.Controllers
         public ActionResult Slide1()
         {
             ViewBag.menu = Menu.SLIDE_1;
-            string path = Server.MapPath("~/images");
+            string path = GetImagePath();
             DirectoryInfo di = new DirectoryInfo(path);
             FileInfo[] fi = di.GetFiles();
 
@@ -56,7 +56,7 @@ namespace Album.Controllers
 
         public ActionResult Download(string f)
         {
-            string path = Server.MapPath("~/images");
+            string path = GetImagePath();
             string filepath = Path.Combine(path, f);
 
             if (!System.IO.File.Exists(filepath))
