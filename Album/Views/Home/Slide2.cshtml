@@ -1,0 +1,63 @@
+﻿@model List<Album.Models.Photo>
+
+@using Album.Models
+
+@{
+    ViewBag.Title = "Slide 2";
+}
+
+@section css {
+    <link href="~/js/lib/least/css/least.min.css" rel="stylesheet" />
+}
+
+<section>
+    <ul id="gallery">
+        <li id="fullPreview"></li>
+        @foreach (Photo o in Model)
+        {
+            <li>
+                <a href="@o.Url"></a>
+                <img data-original="@Url.Action("Thumbnail", new { f = @o.Title })"
+                     src="@Url.Content("~/js/lib/least/img/effects/white.gif")" alt="@o.Title" />
+                <div class="overLayer"></div>
+                <div class="infoLayer">
+                    <ul>
+                        <li>
+                            <h2>@o.Title</h2>
+                        </li>
+                        <li>
+                            <p>
+                                @o.DisplaySize<br />
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="projectInfo">
+                    <button class="btn btn-primary" onclick="download('@o.Title')"><i class="icon-file icon-white"></i> Download</button>
+                </div>
+            </li>
+        }
+    </ul>
+
+    <iframe id="ifrm" style="display: none; width: 0px; height: 0px"></iframe>
+</section>
+
+@section js {
+    <script src="~/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="~/js/lib/least/js/least.min.js"></script>
+    <script src="~/js/lib/least/js/jquery.lazyload.min.js"></script>
+
+    <script type="text/javascript">
+        function init() {
+            $('#gallery').least();
+        }
+
+        function download(f) {
+            var url = '@Url.Action("Download")' + '?f=' + f;
+            $('#ifrm').attr('src', url);
+        }
+
+        $(init);
+    </script>
+}

@@ -1,21 +1,39 @@
-﻿<!DOCTYPE html>
+﻿@using Album.Constants
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>My Album - @ViewBag.Title</title>
 
     <link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/css/app.css" rel="stylesheet" />
+    @RenderSection("css", false)
 
     <script src="~/js/lib/jquery-2.0.3.min.js"></script>
     <script src="~/css/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="navbar navbar-fixed-top" role="navigation">
+        <div class="pull-right">
+            <ul class="nav nav-tabs">
+                <li class="@(ViewBag.menu == Menu.SLIDE_1 ? "active" : null)">
+                    <a href="@Url.Action("Slide1")">Slide #1</a>
+                </li>
+                <li class="@(ViewBag.menu == Menu.SLIDE_2 ? "active" : null)">
+                    <a href="@Url.Action("Slide2")">Slide #2</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content container">
         <div class="row">
             @RenderBody()
         </div>
     </div>
+
+    @RenderSection("js", false)
 </body>
 </html>

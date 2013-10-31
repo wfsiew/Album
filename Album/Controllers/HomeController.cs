@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using Album.Models;
+using Album.Constants;
 
 namespace Album.Controllers
 {
@@ -16,6 +17,12 @@ namespace Album.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
+            return Slide1();
+        }
+
+        public ActionResult Slide1()
+        {
+            ViewBag.menu = Menu.SLIDE_1;
             string path = Server.MapPath("~/images");
             DirectoryInfo di = new DirectoryInfo(path);
             FileInfo[] fi = di.GetFiles();
@@ -44,7 +51,7 @@ namespace Album.Controllers
                 Photos = lp
             };
 
-            return View(model);
+            return View("Slide1", model);
         }
 
         public ActionResult Download(string f)
@@ -59,9 +66,10 @@ namespace Album.Controllers
             return new FilePathResult(filepath, "application/octet-stream");
         }
 
-        public ActionResult Gallery()
+        public ActionResult Slide2()
         {
-            string path = Server.MapPath("~/images");
+            ViewBag.menu = Menu.SLIDE_2;
+            string path = GetImagePath();
             DirectoryInfo di = new DirectoryInfo(path);
             FileInfo[] fi = di.GetFiles();
 
@@ -89,7 +97,7 @@ namespace Album.Controllers
             if (string.IsNullOrEmpty(f))
                 return HttpNotFound();
 
-            string path = Server.MapPath("~/images");
+            string path = GetImagePath();
             string filepath = Path.Combine(path, f);
 
             Image image = Image.FromFile(filepath);
@@ -129,6 +137,11 @@ namespace Album.Controllers
 
             // Return thumbnail size.
             return new Size((int)(originalWidth * factor), (int)(originalHeight * factor));
+        }
+
+        private string GetImagePath()
+        {
+            return Server.MapPath("~/images");
         }
 	}
 }

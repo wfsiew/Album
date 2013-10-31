@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\app.css" />
     <Content Include="css\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap\css\bootstrap.css" />
@@ -101,14 +102,6 @@
     <Content Include="js\lib\least\img\effects\.DS_Store" />
     <Content Include="js\lib\least\js\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="js\lib\imagegallery\css\jquery.image-gallery.css" />
-    <Content Include="js\lib\imagegallery\css\jquery.image-gallery.min.css" />
-    <Content Include="js\lib\imagegallery\css\style.css" />
-    <Content Include="js\lib\imagegallery\img\loading.gif" />
-    <Content Include="js\lib\imagegallery\js\jquery.image-gallery.js" />
-    <Content Include="js\lib\imagegallery\js\jquery.image-gallery.min.js" />
-    <Content Include="js\lib\imagegallery\js\load-image.js" />
-    <Content Include="js\lib\imagegallery\js\main.js" />
     <Content Include="js\lib\jquery-2.0.3.min.js" />
     <Content Include="js\lib\jquery-ui\images\animated-overlay.gif" />
     <Content Include="js\lib\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -144,11 +137,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\Slide2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Constants\Menu.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +152,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Home\Slide1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -3,7 +3,7 @@
 @using Album.Models
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Slide 1";
 }
 
 <div class="span10 columns">
@@ -31,22 +31,24 @@
         <a class="carousel-control right" href="#crs" data-slide="next">&rsaquo;</a>
     </div>
 
-    <script type="text/javascript">
-        function init() {
-            $('#crs').carousel({
-                interval: 5000
-            });
+    @section js {
+        <script type="text/javascript">
+            function init() {
+                $('#crs').carousel({
+                    interval: 5000
+                });
 
-            //$('#crs').bind('mousewheel', function (e) {
-            //    e.preventDefault();
-            //    if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0)
-            //        $(this).carousel('next');
+                //$('#crs').bind('mousewheel', function (e) {
+                //    e.preventDefault();
+                //    if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0)
+                //        $(this).carousel('next');
 
-            //    else
-            //        $(this).carousel('prev');
-            //});
-        }
+                //    else
+                //        $(this).carousel('prev');
+                //});
+            }
 
-        $(init);
-    </script>
+            $(init);
+        </script>
+    }
 </div>
