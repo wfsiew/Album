@@ -6,26 +6,28 @@ using System.Web.Mvc;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading.Tasks;
 using Album.Models;
 using Album.Constants;
 
 namespace Album.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //
         // GET: /Home/
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return Slide1();
+            return await Slide1();
         }
 
-        public ActionResult Slide1()
+        public async Task<ActionResult> Slide1()
         {
             ViewBag.menu = Menu.SLIDE_1;
             string path = GetImagePath();
             DirectoryInfo di = new DirectoryInfo(path);
-            FileInfo[] fi = di.GetFiles();
+            FileInfo[] fi = await Task.Run(() => { return di.GetFiles(); });
 
             List<int> l = new List<int>();
             List<Photo> lp = new List<Photo>();
@@ -66,12 +68,12 @@ namespace Album.Controllers
             return new FilePathResult(filepath, "application/octet-stream");
         }
 
-        public ActionResult Slide2()
+        public async Task<ActionResult> Slide2()
         {
             ViewBag.menu = Menu.SLIDE_2;
             string path = GetImagePath();
             DirectoryInfo di = new DirectoryInfo(path);
-            FileInfo[] fi = di.GetFiles();
+            FileInfo[] fi = await Task.Run(() => { return di.GetFiles(); });
 
             List<Photo> lp = new List<Photo>();
 
@@ -92,7 +94,7 @@ namespace Album.Controllers
             return View(lp);
         }
 
-        public ActionResult Thumbnail(string f)
+        public async Task<ActionResult> Thumbnail(string f)
         {
             if (string.IsNullOrEmpty(f))
                 return HttpNotFound();
@@ -100,9 +102,9 @@ namespace Album.Controllers
             string path = GetImagePath();
             string filepath = Path.Combine(path, f);
 
-            Image image = Image.FromFile(filepath);
+            Image image = await Task.Run(() => { return Image.FromFile(filepath); });
             Size thumbnailSize = GetThumbnailSize(image);
-            Image thumbnail = image.GetThumbnailImage(thumbnailSize.Width, thumbnailSize.Height, null, IntPtr.Zero);
+            Image thumbnail = await Task.Run(() => { return image.GetThumbnailImage(thumbnailSize.Width, thumbnailSize.Height, null, IntPtr.Zero); });
 
             byte[] b = null;
             using (MemoryStream ms = new MemoryStream())
