@@ -1,0 +1,53 @@
+﻿@model Album.Models.Auth
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+
+    <script src="~/js/lib/jquery-2.0.3.min.js"></script>
+    <script src="~/css/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form action="@Url.Action("Index", new { ReturnUrl = ViewBag.ReturnUrl })" method="post" class="form-horizontal login-box well" role="form">
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    @ViewBag.Error
+                </div>
+            }
+            @Html.AntiForgeryToken()
+            <div class="control-group">
+                <label class="control-label">Username</label>
+                <div class="controls">
+                    <input id="username" name="Username" type="text" placeholder="Username" />
+                    @Html.ValidationMessageFor(x => x.Username, "", new { @class = "label label-important" })
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Password</label>
+                <div class="controls">
+                    <input id="password" name="Password" type="password" placeholder="Password" />
+                    @Html.ValidationMessageFor(x => x.Password, "", new { @class = "label label-important" })
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
